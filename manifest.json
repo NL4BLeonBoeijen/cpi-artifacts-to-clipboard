@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "CPI iFlow ID Copier",
+  "version": "0.2.0",
+  "description": "Copies selected CPI iFlow IDs from the Artifacts screen.",
+  "permissions": ["clipboardWrite", "activeTab"],
+  "host_permissions": [
+    "https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com/*"
+  ],
+  "action": {
+    "default_title": "Copy CPI iFlow IDs",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page.js"],
+      "matches": [
+        "https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com/*"
+      ]
+    }
+  ]
+}
