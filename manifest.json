@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "CPI iFlow ID Copier",
-  "version": "0.2.0",
-  "description": "Copies selected CPI iFlow IDs to your clipboard.",
+  "name": "CPI Artifacts to Clipboard",
+  "version": "0.3.0",
+  "description": "Copies selected CPI Artifact IDs to your clipboard.",
   "permissions": ["clipboardWrite", "activeTab"],
   "host_permissions": [
     "https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com/*"
   ],
   "action": {
-    "default_title": "Copy CPI iFlow IDs",
+    "default_title": "Copy Artifact IDs",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",

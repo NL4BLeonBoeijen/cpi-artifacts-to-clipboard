@@ -13,7 +13,7 @@ function isArtifactsUrl(url) {
 chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
   if (!tab || !isArtifactsUrl(tab.url)) {
     copyBtn.disabled = true;
-    status.textContent = "Not on CPI Artifacts screen.";
+    status.textContent = "Not on a Package Artifacts screen.";
     return;
   }
 
@@ -34,12 +34,12 @@ chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
 
         const ids = response?.ids || [];
         if (!ids.length) {
-          status.textContent = "No selected iFlows.";
+          status.textContent = "No selected Artifacts.";
           return;
         }
 
         navigator.clipboard.writeText(ids.join(","));
-        status.textContent = `Copied ${ids.length} iFlow ID(s).`;
+        status.textContent = `Copied ${ids.length} ID(s).`;
       }
     );
   });
