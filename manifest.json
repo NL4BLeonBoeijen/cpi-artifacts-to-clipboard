@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "CPI Artifacts to Clipboard",
-  "version": "0.3.0",
-  "description": "Copies selected CPI Artifact IDs to your clipboard.",
+  "name": "CPI Package or Artifacts to Clipboard",
+  "version": "0.4.0",
+  "description": "Copies Package Id or selected Artifact IDs to your clipboard.",
   "permissions": ["clipboardWrite", "activeTab"],
   "host_permissions": [
     "https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com/*"

@@ -1,4 +1,5 @@
 const copyBtn = document.getElementById("copyBtn");
+const copyPack = document.getElementById("copyPack");
 const status = document.getElementById("status");
 
 function isArtifactsUrl(url) {
@@ -13,11 +14,12 @@ function isArtifactsUrl(url) {
 chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
   if (!tab || !isArtifactsUrl(tab.url)) {
     copyBtn.disabled = true;
+    copyPack.disabled = true;
     status.textContent = "Not on a Package Artifacts screen.";
     return;
   }
 
-  copyBtn.addEventListener("click", () => {
+copyBtn.addEventListener("click", () => {
     chrome.tabs.sendMessage(
       tab.id,
       { type: "CPI_IFLOW_IDS_REQUEST" },
@@ -40,6 +42,29 @@ chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
 
         navigator.clipboard.writeText(ids.join(","));
         status.textContent = `Copied ${ids.length} ID(s).`;
+      }
+    );
+  });
+
+  copyPack.addEventListener("click", () => {
+    chrome.tabs.sendMessage(
+      tab.id,
+      { type: "CPI_IFLOW_IDS_REQUEST" },
+      (response) => {
+        if (chrome.runtime.lastError) {
+          status.textContent = "Content script not available.";
+          return;
+        }
+
+        if (response?.error) {
+          status.textContent = response.error;
+          return;
+        }
+
+        const vPackageId = response?.packageId;
+
+        navigator.clipboard.writeText(vPackageId);
+        status.textContent = `Copied Package ID.`;
       }
     );
   });
