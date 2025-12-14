@@ -30,7 +30,9 @@
       }
     }
 
-    return { ids: [...new Set(ids)], error: null };
+    let vPackageId = window.location.pathname.split("/").pop();
+
+    return { ids: [...new Set(ids)], error: null, packageId: vPackageId };
   }
 
   window.addEventListener("message", (event) => {

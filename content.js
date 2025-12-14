@@ -5,6 +5,7 @@
   s.onload = () => s.remove();
   (document.head || document.documentElement).appendChild(s);
 
+  
   chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (msg.type !== "CPI_IFLOW_IDS_REQUEST") return;
 
