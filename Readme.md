@@ -3,7 +3,7 @@ This is an extension for Chrome/Edge to easily copy CPI Package Id and Artifact 
 
 
 # Install
-* Download the cpi-artifacts-to-clipboard.zip
+* Download the [cpi-artifacts-to-clipboard.zip](cpi-artifacts-to-clipboard.zip)
 * Unpack the zipfile
 * In Chrome/Edge goto Extensions
 * Activate Developer mode
