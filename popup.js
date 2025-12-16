@@ -4,7 +4,7 @@ const status = document.getElementById("status");
 
 function isArtifactsUrl(url) {
   try {
-    if (url.includes("https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com") && url.includes("section=ARTIFACTS")) return true;
+    if ((url.includes("https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com") || url.includes("https://jumbo-cf-dev.it-cpi001.cfapps.eu10.hana.ondemand.com")) && url.includes("section=ARTIFACTS")) return true;
      return false;
   } catch {
     return false;
@@ -37,6 +37,12 @@ copyBtn.addEventListener("click", () => {
         const ids = response?.ids || [];
         if (!ids.length) {
           status.textContent = "No selected Artifacts.";
+          return;
+        }
+
+        if (response.draft){
+          status.textContent = "Error: You have selected Drafts, that is not allowed.";
+          status.classList.add("error");
           return;
         }
 

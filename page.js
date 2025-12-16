@@ -1,5 +1,8 @@
 (() => {
   function pickId(obj) {
+    if (obj.Version === 'Draft'){
+      throw new CustomError(obj.Name + " is in Draft version");
+    }
     return (
       obj?.Name ||
       null
@@ -13,6 +16,7 @@
 
     const ids = [];
     const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    let drafts = false;
 
     for (const cb of checked) {
       const el = sap.ui.core.Element.closestTo(cb);
@@ -21,18 +25,22 @@
       while (cur) {
         const ctx = cur.getBindingContext?.();
         const obj = ctx?.getObject?.();
+        try{
         const id = pickId(obj);
         if (id) {
           ids.push(String(id));
           break;
         }
+      } catch (e){
+        drafts = true;
+      }
         cur = cur.getParent?.();
       }
     }
 
     let vPackageId = window.location.pathname.split("/").pop();
 
-    return { ids: [...new Set(ids)], error: null, packageId: vPackageId };
+    return { ids: [...new Set(ids)], error: null, packageId: vPackageId, draft: drafts };
   }
 
   window.addEventListener("message", (event) => {
