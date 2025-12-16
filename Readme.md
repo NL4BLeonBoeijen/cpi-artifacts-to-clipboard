@@ -11,7 +11,7 @@ This is an extension for Chrome/Edge to easily copy CPI Package Id and Artifact 
 * Optional: Pin the Extension to your toolbar
 
 # How to use
-The extension only works on the CPI Development Environment.
+The extension only works on the CPI Development Environment. **https://jumbo-cf-dev.integrationsuite.cfapps.eu10.hana.ondemand.com**
 
 Goto the Artifacts Screen of your Package and select the Artifacts that you want to copy, by selecting the checkboxes.
 
